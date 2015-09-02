@@ -1,7 +1,7 @@
 /**
  * Created by artem on 02.09.2015.
  */
-public class Tree<T> {
+public class Tree<T extends  Comparable<T> > {
 
     class TreeItem
     {
@@ -39,7 +39,31 @@ public class Tree<T> {
         }
     }
 
-    private void Add(T value, TreeItem root) {
-        if(root.left.value)
+    private void Add(T value, TreeItem item) {
+        if(item.left.value.compareTo(value)==0)
+        {
+            return;
+        }
+        if(item.left.value.compareTo(value)>0)
+        {
+            if(item.left==null){
+                item.left=new TreeItem(value,item);
+            }
+            else
+            {
+                Add(value,item.left);
+            }
+        }
+        else
+        {
+            if(item.right==null){
+                item.right=new TreeItem(value,item);
+            }
+            else
+            {
+                Add(value,item.right);
+            }
+        }
+
     }
 }
