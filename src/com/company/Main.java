@@ -11,6 +11,8 @@ public class Main {
         {
             tree.Add(rnd.nextInt(100));
         }
-        tree.printAll();
+        Auto a =new Auto("BMW","M6","ae2565ea");
+        System.out.print(a);
+        //tree.printAll();
     }
 }
