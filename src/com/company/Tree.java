@@ -1,3 +1,5 @@
+package com.company;
+
 /**
  * Created by artem on 02.09.2015.
  */
@@ -35,16 +37,16 @@ public class Tree<T extends  Comparable<T> > {
         }
         else
         {
-            Add(value,this.root)
+            Add(value,this.root);
         }
     }
 
     private void Add(T value, TreeItem item) {
-        if(item.left.value.compareTo(value)==0)
+        if(item.value.compareTo(value)==0)
         {
             return;
         }
-        if(item.left.value.compareTo(value)>0)
+        if(item.value.compareTo(value)>0)
         {
             if(item.left==null){
                 item.left=new TreeItem(value,item);
@@ -64,6 +66,29 @@ public class Tree<T extends  Comparable<T> > {
                 Add(value,item.right);
             }
         }
+    }
+
+    public void printAll(){
+        if(root==null)
+        {
+            System.out.println("Tree is Empty");
+        }
+        else
+        {
+            printItem(root);
+        }
+    }
+
+    private void printItem(TreeItem item) {
+        if(item.left!=null)
+        {
+            printItem(item.left);
+        }
+        if(item.right!=null)
+        {
+            printItem(item.right);
+        }
+        System.out.printf("%s; ", item.value.toString());
 
     }
 }
